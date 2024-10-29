@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotJunar - About Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: #e0e0e0;
+        }
+
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #0a0a0a, #1a1a1a 70%);
+            z-index: -1;
+            overflow: hidden;
+        }
+        .background-animation::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            animation: move 20s linear infinite;
+        }
+        @keyframes move {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-top: 50px;
+            color: #00e1ff;
+            font-size: 2em;
+            text-shadow: 0 0 10px #00e1ff;
+        }
+        #dashboard {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #a3e4ff;
+        }
+
+        section {
+            padding: 100px 20px;
+            text-align: center;
+            transition: transform 0.4s;
+        }
+        .parallax {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.5s, opacity 0.5s;
+        }
+        .parallax.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .neon-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #00e1ff;
+            border: 2px solid #00e1ff;
+            border-radius: 5px;
+            text-decoration: none;
+            text-shadow: 0 0 8px #00e1ff;
+            transition: all 0.3s;
+        }
+        .neon-button:hover {
+            background-color: #00e1ff;
+            color: #1a1a1a;
+            text-shadow: none;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .card {
+            background: #111;
+            border: 2px solid #00e1ff;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            border-radius: 10px;
+            color: #e0e0e0;
+            box-shadow: 0 0 10px #00e1ff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00e1ff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="background-animation"></div>
+
+    <header>
+        NotJunar
+    </header>
+
+    <div id="dashboard">
+        <span id="greeting"></span><br>
+        Skills: NodeJS, Python, Java, Frontend Development<br>
+        GitHub: <a href="https://github.com/notjunar" class="neon-button" target="_blank">Visit GitHub</a>
+    </div>
+
+    <section class="parallax">
+        <h2>About Me</h2>
+        <p>Not really a dev, I just complain.</p>
+    </section>
+
+    <section class="parallax">
+        <h2>Skills</h2>
+        <div class="cards">
+            <div class="card">NodeJS</div>
+            <div class="card">Python</div>
+            <div class="card">Java</div>
+            <div class="card">Frontend Dev</div>
+        </div>
+    </section>
+
+    <section class="parallax">
+        <h2>Projects</h2>
+        <p>I sometimes develop plugins, websites, and libraries, explore my Github above to see my projects.</p>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+
+        function updateGreeting() {
+            const hours = new Date().getHours();
+            const greetingElement = document.getElementById('greeting');
+            if (hours < 12) {
+                greetingElement.textContent = 'Good Morning, Visitor!';
+            } else if (hours < 18) {
+                greetingElement.textContent = 'Good Afternoon, Visitor!';
+            } else {
+                greetingElement.textContent = 'Good Evening, Visitor!';
+            }
+        }
+        updateGreeting();
+
+        const sections = document.querySelectorAll('.parallax');
+        window.addEventListener('scroll', () => {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const triggerPoint = window.innerHeight / 1.3;
+                if (sectionTop < triggerPoint) {
+                    section.classList.add('show');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
