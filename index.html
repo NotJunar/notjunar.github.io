@@ -6,422 +6,202 @@
     <title>👋 Hi, I am NotJunar</title>
     <style>
         :root {
-            --primary: #0a0a1f;
-            --secondary: #16213e;
-            --accent1: #ff2e63;
-            --accent2: #00fff5;
-            --accent3: #8A2BE2;
-            --accent4: #FF1493;
-            --text: #ffffff;
+            --primary-bg: #0f172a;
+            --secondary-bg: #1e293b;
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --accent: #60a5fa;
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px var(--accent2), 0 0 10px var(--accent2); }
-            50% { text-shadow: 0 0 20px var(--accent2), 0 0 30px var(--accent2); }
-            100% { text-shadow: 0 0 5px var(--accent2), 0 0 10px var(--accent2); }
-        }
-
-        @keyframes shine {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
-        }
-
-        @keyframes sakura {
-            0% { transform: translateY(-10vh) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(720deg); }
-        }
-
-        @keyframes background-pan {
-            from { background-position: 0% center; }
-            to { background-position: -200% center; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: var(--primary);
-            color: var(--text);
+            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            color: var(--text-primary);
+            font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        .background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(
-                90deg,
-                var(--primary),
-                var(--accent3),
-                var(--accent1),
-                var(--primary)
-            );
-            background-size: 200% 200%;
-            animation: background-pan 10s linear infinite;
-            opacity: 0.3;
-        }
-
-        .sakura {
-            position: fixed;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .sakura::before {
-            content: '🌸';
-            position: absolute;
-            animation: sakura 6s linear infinite;
-            font-size: 1.5rem;
-        }
-
-        .container {
-            max-width: 1000px;
+        main {
+            max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
-            position: relative;
-            z-index: 1;
         }
 
-        .profile {
-            background: rgba(10, 10, 31, 0.8);
-            backdrop-filter: blur(20px);
-            border-radius: 3rem;
-            padding: 3rem;
-            box-shadow: 
-                0 0 20px rgba(0, 255, 245, 0.2),
-                0 0 40px rgba(255, 46, 99, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .profile::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.1),
-                transparent
-            );
-            background-size: 200% 100%;
-            animation: shine 8s linear infinite;
-        }
-
-        .quote {
-            font-style: italic;
-            font-size: 2rem;
-            background: linear-gradient(
-                45deg,
-                var(--accent1),
-                var(--accent2),
-                var(--accent4),
-                var(--accent1)
-            );
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 2rem 0;
+        header {
             text-align: center;
-            animation: gradient 5s ease infinite;
-            transform: translateZ(20px);
+            margin-bottom: 4rem;
         }
 
         h1 {
-            font-size: 4.5rem;
-            margin: 0;
-            text-align: center;
-            background: linear-gradient(
-                45deg,
-                var(--accent2),
-                var(--accent4),
-                var(--accent1),
-                var(--accent2)
-            );
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            animation: gradient 5s ease infinite;
-            transform: translateZ(30px);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        .links {
-            margin-top: 2rem;
+        header p {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        nav {
+            margin: 2rem 0;
+        }
+
+        nav ul {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            transform: translateZ(10px);
-        }
-
-        .links a {
-            color: var(--text);
-            text-decoration: none;
-            padding: 0.8rem 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3rem;
-            border: 2px solid rgba(255, 46, 99, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .links a::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                45deg,
-                var(--accent1),
-                var(--accent2),
-                var(--accent4)
-            );
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .links a:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 
-                0 5px 20px rgba(255, 46, 99, 0.3),
-                0 0 20px rgba(0, 255, 245, 0.5);
-        }
-
-        .links a:hover::before {
-            opacity: 1;
-        }
-
-        .section {
-            margin-top: 4rem;
-            position: relative;
-            transform: translateZ(15px);
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            color: var(--accent2);
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            text-shadow: 
-                0 0 10px rgba(0, 255, 245, 0.5),
-                0 0 20px rgba(0, 255, 245, 0.3);
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            list-style: none;
         }
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 1.5rem;
-            border: 2px solid rgba(0, 255, 245, 0.2);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(0, 255, 245, 0.2),
-                transparent
-            );
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 
-                0 10px 30px rgba(0, 255, 245, 0.3),
-                0 0 30px rgba(255, 46, 99, 0.2);
-        }
-
-        .project-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        .project-card h3 {
-            color: var(--accent1);
-            margin: 0 0 1rem 0;
-            font-size: 1.5rem;
-            text-shadow: 0 0 10px rgba(255, 46, 99, 0.5);
-        }
-
-        .project-card a {
-            color: var(--accent2);
+        nav a {
+            color: var(--text-secondary);
             text-decoration: none;
-            font-size: 1rem;
-            display: inline-block;
-            margin-top: 1.5rem;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: color 0.2s;
         }
 
-        .project-card a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent2);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
+        nav a:hover {
+            color: var(--text-primary);
         }
 
-        .project-card a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--secondary-bg);
+            padding-bottom: 0.5rem;
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            gap: 0.5rem;
         }
 
         .skill-tag {
-            background: linear-gradient(
-                45deg,
-                var(--accent1),
-                var(--accent4),
-                var(--accent2)
-            );
-            background-size: 200% 200%;
-            color: var(--primary);
-            padding: 0.8rem 2rem;
-            border-radius: 3rem;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: gradient 5s ease infinite;
-            cursor: pointer;
+            background: var(--secondary-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.9rem;
         }
 
-        .skill-tag:hover {
-            transform: translateY(-5px) rotate(5deg) scale(1.1);
-            box-shadow: 
-                0 10px 20px rgba(0, 255, 245, 0.3),
-                0 0 30px rgba(255, 46, 99, 0.2);
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 3rem;
-                letter-spacing: 0.2em;
-            }
-
-            .quote {
-                font-size: 1.5rem;
-            }
-
-            .profile {
-                padding: 2rem;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
+        article {
+            background: var(--secondary-bg);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            transition: transform 0.2s;
         }
-            .sakura:nth-child(${i + 1}) {
-                left: ${Math.random() * 100}vw;
-            }
-            .sakura:nth-child(${i + 1})::before {
-                animation-delay: -${Math.random() * 6}s;
-            }
+
+        article:hover {
+            transform: translateY(-2px);
+        }
+
+        article h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        article p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        article a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        article a:hover {
+            text-decoration: underline;
+        }
+
+        .small {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
-    <div class="background-animation"></div>
-   <div class="sakura"></div>')
-    <div class="container">
-        <div class="profile">
+    <main>
+        <header>
             <h1>NotJunar</h1>
-            <p class="quote">"Not really a developer, I just complain"</p>
+            <p>"Not really a developer, I just complain"</p>
+            <nav>
+                <ul>
+                    <li><a href="https://github.com/NotJunar" target="_blank">GitHub</a></li>
+                    <li><a href="https://dsc.gg/joinjnmc" target="_blank">Discord</a></li>
+                    <li><a href="https://junarmc.xyz" target="_blank">JN Mainpage</a></li>
+                    <li><a href="https://only-fans.uk/notjunar" target="_blank">OnlyFans</a></li>
+                </ul>
+            </nav>
+        </header>
 
-            <div class="links">
-                <a href="https://github.com/NotJunar" target="_blank">GitHub</a>
-                <a href="https://dsc.gg/joinjnmc" target="_blank">Discord Server</a>
-                <a href="https://junarmc.xyz" target="_blank">Website</a>
-                <a href="https://only-fans.uk/notjunar" target="_blank">OnlyFans</a>
-            </div>
+        <section>
+            <h2>About Me</h2>
+            <p>
+                I am not really a developer, occasionally code out of interest. Owner of 
+                JN Network. A EaglerCraft/Java Network focused on RPG.
+            </p>
+        </section>
 
-            <div class="section">
-                <h2>About Me</h2>
-                <p>I am not really a developer, occasionally code out of interest. Owner of JN Network. A EaglerCraft/Java Network focused on RPG.</p>
+        <section>
+            <h2>Skills</h2>
+            <div class="skills">
+                <span class="skill-tag">Terfah</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Discord Bots</span>
+                <span class="skill-tag">Minecraft Plugins</span>
             </div>
+        </section>
 
-            <div class="section">
-                <h2>Skills</h2>
-                <div class="skills">
-                    <span class="skill-tag">Terfah</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">Discord Bots</span>
-                    <span class="skill-tag">Minecraft Plugins</span>
-                </div>
-            </div>
+        <section>
+            <h2>Current Projects</h2>
+            <div class="projects">
+                <article>
+                    <h3>Marest</h3>
+                    <p>
+                        A experiment to see if you can proof-a-concept a Bungeecord clone in Python. Apparently you can use TCP protocol and a basic logic for premium handling but overall it's stupid and unefficent. Plan to maintain.
+                    </p>
+                    <a href="https://github.com/NotJunar/Marest" target="_blank">View Project ↗</a>
+                </article>
 
-            <div class="section">
-                <h2>Current Projects</h2>
-                <div class="projects">
-                    <div class="project-card">
-                        <h3>Marest</h3>
-                        <p>One of my laughable experiment to see if you can make a Bungeecord alternative in Python</p>
-                        <a href="https://github.com/NotJunar/Marest" target="_blank">View Project ↗</a>
-                    </div>
-                    <div class="project-card">
-                        <h3>PZJobs</h3>
-                        <p>Minecraft jobs plugin for 1.17.1 and above</p>
-                        <small>Coming Soon ✨</small>
-                    </div>
-                    <div class="project-card">
-                        <h3>Terfah</h3>
-                        <p>Based-on-Python half-finished interpreter language called Terfah, inspired by NoodleCodes.</p>
-                        <a href="https://github.com/NotJunar/Terfah" target="_blank">View Project ↗</a>
-                    </div>
-                </div>
+                <article>
+                    <h3>PZJobs</h3>
+                    <p>
+                        A upcoming plugin I plan to make that adds Jobs to Minecraft. I want to do this because since I am the developer for it. I have more control and can better modify it for my own server.
+                    </p>
+<br> <!- the spacing sucks thats why i aded a new line ->
+                    <a href="https://notjunar.is-a.dev" target="_blank">Upcoming Plugin ↗</a>
+                </article>
+
+                <article>
+                    <h3>Terfah</h3>
+                    <p>
+                        Based-on-Python half-finished interpreter language called Terfah,
+                        inspired by NoodleCodes. Currently some core parsing strategy does not work. Plan to maintain.
+                    </p>
+                    <a href="https://github.com/NotJunar/Terfah" target="_blank">View Project ↗</a>
+                </article>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 </body>
 </html>
