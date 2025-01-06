@@ -5,12 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>👋 Hi, I am NotJunar</title>
     <style>
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-secondary); }
+            50% { box-shadow: 0 0 25px var(--accent), 0 0 40px var(--accent-secondary); }
+            100% { box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-secondary); }
+        }
+
+        @keyframes neon {
+            0% { text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent); }
+            50% { text-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent); }
+            100% { text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent); }
+        }
+
         :root {
-            --primary-bg: #0f172a;
-            --secondary-bg: #1e293b;
-            --text-primary: #ffffff;
-            --text-secondary: #cbd5e1;
-            --accent: #60a5fa;
+            --primary-bg: #030712;
+            --secondary-bg: #111827;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --hover-accent: #4f46e5;
+            --gradient-1: #1e1b4b;
+            --gradient-2: #3730a3;
+            --gradient-3: #312e81;
         }
 
         * {
@@ -20,37 +43,66 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+            background: var(--primary-bg);
             color: var(--text-primary);
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             line-height: 1.6;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, var(--gradient-1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, var(--gradient-2) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, var(--gradient-3) 0%, transparent 60%);
+            opacity: 0.4;
+            z-index: -1;
         }
 
         main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
+            min-height: 100vh;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 1;
         }
 
         header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+            position: relative;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: neon 3s ease-in-out infinite;
+            letter-spacing: -2px;
         }
 
         header p {
             color: var(--text-secondary);
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            opacity: 0.9;
         }
 
         nav {
-            margin: 2rem 0;
+            margin: 3rem 0;
         }
 
         nav ul {
@@ -58,82 +110,171 @@
             justify-content: center;
             gap: 2rem;
             list-style: none;
+            flex-wrap: wrap;
         }
 
         nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 5rem;
+            background: rgba(17, 24, 39, 0.5);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            backdrop-filter: blur(10px);
+            transform: translateZ(0);
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section:hover {
+            transform: translateZ(50px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
         }
 
         h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--secondary-bg);
-            padding-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-weight: 700;
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 1.5rem;
         }
 
         .skill-tag {
-            background: var(--secondary-bg);
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.9rem;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--accent);
+            animation: glow 4s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            color: white;
         }
 
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
         }
 
         article {
-            background: var(--secondary-bg);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            transition: transform 0.2s;
+            background: rgba(17, 24, 39, 0.8);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        article::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+            transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            transition: transform 0.8s;
         }
 
         article:hover {
-            transform: translateY(-2px);
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        article:hover::before {
+            transform: translateX(0) translateY(0) rotate(45deg);
         }
 
         article h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-weight: 600;
         }
 
         article p {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
         article a {
             color: var(--accent);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
         article a:hover {
-            text-decoration: underline;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            color: white;
+            gap: 1rem;
+            padding-right: 2rem;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
         }
 
-        .small {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+        @media (max-width: 768px) {
+            main {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                padding: 0.8rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -188,7 +329,6 @@
                     <p>
                         A upcoming plugin I plan to make that adds Jobs to Minecraft. I want to do this because since I am the developer for it. I have more control and can better modify it for my own server.
                     </p>
-<br> <!- the spacing sucks thats why i aded a new line ->
                     <a href="https://notjunar.is-a.dev" target="_blank">Upcoming Plugin ↗</a>
                 </article>
 
